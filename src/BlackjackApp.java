@@ -27,15 +27,15 @@ public class BlackjackApp {
     private static String getHitOrStand() {
     }
     
-	// affiche les cartes dans la main du courtier et les cartes dans la main du joueur
+	// affiche les cartes dans la main du croupier et les cartes dans la main du joueur
 	    private static void showHands() {
     }
     
-	// affiche le message DEALER'S SHOW CARD et puis affiche le deuxieme carte dans la main du courtier
+	// affiche le message DEALER'S SHOW CARD et puis affiche le deuxieme carte dans la main du croupier
     private static void showDealerShowCard() {
     }
     
-	// affiche le message DEALER'S CARDS et puis affiche les cartes dans la main du courtier
+	// affiche le message DEALER'S CARDS et puis affiche les cartes dans la main du croupier
     private static void showDealerHand() {
     }
     

@@ -4,11 +4,13 @@ public class Deck {
     
 	//stocke les cartes dans  Card[ ] deck et ensuite il appelle la fonction shuflleDeck(). 
     public Deck() {
+        //Le deck vaut de 0 à 51
     }
     
 	//shuffleDeck, pour mélanger les cartes à l'aide de l'algorithme de mélange de Fisher-Yates:
 	//https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
     private void shuffleDeck() {
+        //Lire docu // https://www.youtube.com/playlist?list=PLqM7alHXFySEQDk2MDfbwEdjd2svVJH9p
     }
     
     public Card drawCard() {

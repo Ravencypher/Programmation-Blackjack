@@ -10,6 +10,7 @@ public class BlackjackGame {
 	//Initialiser deck, playerHand, dealerHand, minBet et maxBet
 	//le minimum et le maximum de la mise sont de 5 et 1000 respectivement.
     public BlackjackGame() {
+        //Voir TP1 minbet = 5 , maxbet = 1000
     } 
     
     public void loadMoney() {
@@ -18,6 +19,8 @@ public class BlackjackGame {
     
 	//retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
     public boolean isOutOfMoney() {
+        //Si le pot est inférieur à la mise c'est true, sinon false.
+
     }
 
 	// pour initialiser totalMoney a 100
@@ -32,31 +35,34 @@ public class BlackjackGame {
     public double getMinBet() {  
     }
     
-	//retourner le montant total que le joeur peut l'utiliser pour la mise.
+	//retourner le montant total que le joueur peut l'utiliser pour la mise.
     public double getMaxBet() {
     }
     
-	// pour retrouner le montant total
+	// pour retourner le montant total
     public double getTotalMoney() {    
     }
     
-	//pour intialiser le montant de la mise qu'on va le faire
+	//pour initialiser le montant de la mise qu'on va faire
     public void setBet(double amt) {   
     }
     
-	// distribue deux cartes pour le joueur (playerHand) et deux cartes pour le courtier (dealerHand).
+	// distribue deux cartes pour le joueur (playerHand) et deux cartes pour le croupier (dealerHand).
     public void deal() {
+        //Va dans la partie card
     }
     
 	//pour distribuer une carte en plus pour le joueur dans le cas où il fait hit.
     public void hit() {
+        //Va dans la partie card
     }
     
-	//qui ajoute des cartes au main du courtier tant que la somme des points dont il dispose est moins que 17.
+	//qui ajoute des cartes à la main du croupier tant que la somme des points dont il dispose est inférieur à 17.
     public void stand() {
+        // if total > 17 = ajoute des cartes Else stop it bro.
     }
     
-	//retourne le deuxième carte dans la main du courtier.
+	//retourne la deuxième carte dans la main du croupier.
     public Card getDealerShowCard() {
      }
     
@@ -81,23 +87,28 @@ public class BlackjackGame {
     
 	//retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
     public boolean isPush() {
+        //ref tp1
     }
     
 	
 	//retourne true si le player gagne. False sinon.
     public boolean playerWins() {
+        //ref tp1
     }
     
 	// ajoute le montant du mise gagner au montant total
     public void addBetToTotal() {
+        //ref tp1
     }
     
 	// ajoute le montant de mise gagner selon 3:2 au montant total dans le cas de blackjack
     public void addBlackjackToTotal() {
+        //ref tp1
     }
     
 	// soustraire le montant du bet perdu du montant total
     public void subtractBetFromTotal() {
+        //ref tp1
     }
 
 }
