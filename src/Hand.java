@@ -23,11 +23,13 @@ public class Hand {
 	//retourne true si la somme de deux cartes est égale à 21. False sinon
     public boolean isBlackjack() {
     //if else
+        return isBlackjack();
     }
     
 	// retourne true si la somme des points a une valeur supérieur à 21. False sinon.
     public boolean isBust() {
     //if else
+        return isBust();
     }
 
 }

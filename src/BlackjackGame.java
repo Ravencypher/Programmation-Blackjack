@@ -1,3 +1,7 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class BlackjackGame {
     private final Hand playerHand;
     private final Hand dealerHand;
@@ -10,7 +14,19 @@ public class BlackjackGame {
 	//Initialiser deck, playerHand, dealerHand, minBet et maxBet
 	//le minimum et le maximum de la mise sont de 5 et 1000 respectivement.
     public BlackjackGame() {
+
         //Voir TP1 minbet = 5 , maxbet = 1000
+
+        /* Scanner sc = new Scanner ( System.in );
+        double startingMoney = Double.parseDouble ( sc.nextLine () );
+        NumberFormat currency = NumberFormat.getCurrencyInstance ( Locale.CANADA);
+        String choice = "y"; */
+
+        /*while ( startingMoney < 5 || startingMoney > 1000 ) {
+        System.out.println ( "Starting money must be between $5.00 and $10,000.00" );
+        System.out.print ( "Starting money : " );
+        startingMoney = Double.parseDouble ( sc.nextLine () );
+        }*/
     } 
     
     public void loadMoney() {
