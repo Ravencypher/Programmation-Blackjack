@@ -128,4 +128,7 @@ public class BlackjackGame {
         //ref tp1
     }
 
+//created this method because I had an error in BlackjackApp, line 73
+    public void saveMoney () {
+    }
 }

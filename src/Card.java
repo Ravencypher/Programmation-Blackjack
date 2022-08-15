@@ -12,7 +12,6 @@ public class Card {
     }
 
     public Card(Card c) {
-        //variables d'instances
         this.suite = c.suite;
         this.rank = c.rank;
         this.points = c.points;
