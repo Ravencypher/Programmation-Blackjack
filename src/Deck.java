@@ -26,16 +26,15 @@ public class Deck {
 
     //shuffleDeck, pour mélanger les cartes à l'aide de l'algorithme de mélange de Fisher-Yates:
     //https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
+    //Lire docu https://www.youtube.com/playlist?list=PLqM7alHXFySEQDk2MDfbwEdjd2svVJH9p
+    // int a = 6;
+    // int b = 5;
     private void shuffleDeck() {
-        //Lire docu // https://www.youtube.com/playlist?list=PLqM7alHXFySEQDk2MDfbwEdjd2svVJH9p
-        int a = 6;
-        int b= 5;
-
         for(int i = 51; i > 0; --i){
-            int j = (int)(Math.random() *52);
-            Card temp = deck[i];
-            deck[i]= deck [j];
-            deck[j] = temp;
+            int randomCard = (int)(Math.random() *52);
+            Card temporary = deck[i];
+            deck[i]= deck[randomCard];
+            deck[randomCard] = temporary;
         }
     }
 

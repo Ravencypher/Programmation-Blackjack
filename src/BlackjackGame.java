@@ -10,7 +10,6 @@ public class BlackjackGame {
     //Initialiser deck, playerHand, dealerHand, minBet et maxBet
     //le minimum et le maximum de la mise sont de 5 et 1000 respectivement.
     public BlackjackGame() {
-        //Voir TP1 minbet = 5 , maxbet = 1000
         this.deck = new Deck();
         this.playerHand = new Hand("player");
         this.dealerHand = new Hand("dealer");
@@ -24,7 +23,6 @@ public class BlackjackGame {
 
     //retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
     public boolean isOutOfMoney() {
-        //Si le pot est inférieur à la mise c'est true, sinon false.
         if(this.totalMoney < this.minBet){
             return true;
         }else{
@@ -34,6 +32,7 @@ public class BlackjackGame {
 
     // pour initialiser totalMoney a 100
     public void resetMoney() {
+        totalMoney = 100;
     }
 
     //retourne false si double localBetAmt est inférieur au minBet ou supérieur au maxBet ou supérieur au totalMoney. True sinon.
@@ -43,12 +42,12 @@ public class BlackjackGame {
 
     //retourner minBet
     public double getMinBet() {
-        return 0;
+        return minBet;
     }
 
     //retourner le montant total que le joueur peut l'utiliser pour la mise.
     public double getMaxBet() {
-        return 0;
+        return maxBet;
     }
 
     // pour retourner le montant total

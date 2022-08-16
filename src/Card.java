@@ -3,12 +3,11 @@ public class Card {
     private final String rank;//2, 3, 4, ..., 10,  
     private final int points;
 
+    //int points = faire un tableau d'objets cad jack = 10, queen = 10 etc.
     public Card(String suite, String rank, int points) {
         this.suite = suite;
         this.rank = rank;
         this.points = points;
-
-        //int points = faire un tableau d'objets cad jack = 10, queen = 10 etc.
     }
 
     public Card(Card c) {
@@ -36,7 +35,6 @@ public class Card {
             return false;
         }
     }
-
 
     public String display() {
         //sout Valeur_rank + " of " + valeur_suite

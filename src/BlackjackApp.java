@@ -10,7 +10,6 @@ public class BlackjackApp {
         String playAgain = "y";
         while(playAgain.equalsIgnoreCase("y")) {
             // votre scenario de simulation vient ici
-           
         }
         System.out.println("\nBye!");
     }

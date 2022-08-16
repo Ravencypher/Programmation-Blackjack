@@ -14,18 +14,19 @@ public class Hand {
         return this.hand;
     }
 
-    // retourne la somme des cartes dans le tableau hand. Si la somme est >21, il faut recompter les cartes pour vérifier si il y a un ACE. Si oui on le considère comme 1, sinon on ajoute la somme des points
+    // retourne la somme des cartes dans le tableau hand. Si la somme est >21, il faut recompter les cartespour
+    // vérifier si il y a un ACE. Si oui on le considère comme 1, sinon on ajoute la somme des points
     public int getPoints() {
         int total = 0;
         for(Card card: hand)
-            total = total + card.getPoints ();
+            total = total + card.getPoints();
         if (total > 21){
             total = 0;
             for(Card card: hand){
-                if( card.isAce () ){
+                if( card.isAce() ){
                     total = total +1;
                 }else{
-                    total = total + card.getPoints ();
+                    total = total + card.getPoints();
                 }
             }
         }
@@ -41,7 +42,7 @@ public class Hand {
     //retourne true si la somme de deux cartes est égale à 21. False sinon
     public boolean isBlackjack() {
         //if else
-        if(this.getPoints () == 21 && this.hand.length == 2){
+        if(this.getPoints() == 21 && this.hand.length == 2){
             return true;
         }else{
             return false;
