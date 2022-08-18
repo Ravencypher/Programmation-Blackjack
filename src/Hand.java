@@ -3,10 +3,11 @@ import java.util.ArrayList;
 public class Hand {
     private Card [] hand;
     private String user;
-    //Soit le joueur soit le croupier. Selon comment on appelle le constructeur et le paramètre quand utilisé
+    private static int counter = 0;
 
     public Hand(String user) {
         this.user = user;
+        this.hand = new Card[10];
     }
 
     //retourne le tableau hand
@@ -25,33 +26,32 @@ public class Hand {
             for(Card card: hand){
                 if( card.isAce() ){
                     total = total +1;
-                }else{
+                } else {
                     total = total + card.getPoints();
                 }
             }
         }
         return total;
-
     }
 
     // ajouter une carte au tableau
     public void addCard(Card card) {
-
+        this.hand[counter] = card;
+        counter++;
+//        hand.add(card);
+//        ARRAY LIST ICI
     }
-
-    //retourne true si la somme de deux cartes est égale à 21. False sinon
     public boolean isBlackjack() {
-        //if else
         if(this.getPoints() == 21 && this.hand.length == 2){
             return true;
         }else{
             return false;
         }
     }
-
-    // retourne true si la somme des points a une valeur supérieur à 21. False sinon.
     public boolean isBust() {
+        if(this.getPoints() > 21)
+            return true;
+    else
         return false;
     }
-
 }

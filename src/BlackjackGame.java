@@ -20,8 +20,6 @@ public class BlackjackGame {
     public void loadMoney() {
         totalMoney = 100;
     }
-
-    //retourne true le total d’argent dont un joueur dispose est inférieur au minimum de mise. False sinon.
     public boolean isOutOfMoney() {
         if(this.totalMoney < this.minBet){
             return true;
@@ -32,11 +30,14 @@ public class BlackjackGame {
 
     // pour initialiser totalMoney a 100
     public void resetMoney() {
-        totalMoney = 100;
+        this.totalMoney = 100;
     }
 
     //retourne false si double localBetAmt est inférieur au minBet ou supérieur au maxBet ou supérieur au totalMoney. True sinon.
     public boolean isValidBet(double localBetAmt) {
+        if (this.betAmount > this.minBet)
+        return true;
+        else
         return false;
     }
 
@@ -52,41 +53,51 @@ public class BlackjackGame {
 
     // pour retourner le montant total
     public double getTotalMoney() {
-        return 0;
+        return totalMoney;
     }
 
-    //pour initialiser le montant de la mise qu'on va faire
     public void setBet(double amt) {
+        //pour initialiser le montant de la mise qu'on va faire
+        int setBet = new betAmount;
     }
 
-    // distribue deux cartes pour le joueur (playerHand) et deux cartes pour le croupier (dealerHand).
     public void deal() {
-        //Va dans la partie card
+        // distribue deux cartes pour le joueur (playerHand) et deux cartes pour le croupier (dealerHand).
+//        playerHand.addCard ( card 1 );
+//        playerHand.addCard ( card 2 );
+//        dealerHand.addCard ( card 1 );
+//        dealerHand.addCard ( card 2 );
     }
 
-    //pour distribuer une carte en plus pour le joueur dans le cas où il fait hit.
     public void hit() {
-        //Va dans la partie card
+        //pour distribuer une carte en plus pour le joueur dans le cas où il fait hit.
+        if (player = yes)
+            distribute card in playerHand;
+        else
+            stop;
     }
 
-    //qui ajoute des cartes à la main du croupier tant que la somme des points dont il dispose est inférieur à 17.
     public void stand() {
-        // if total > 17 = ajoute des cartes Else stop it bro.
+        //qui ajoute des cartes à la main du croupier tant que la somme des points dont il dispose est inférieur à 17.
+        if (dealerHand < 17)
+            distribute card in dealerHand;
+        else
+            stop;
     }
 
-    //retourne la deuxième carte dans la main du croupier.
     public Card getDealerShowCard() {
-        return null;
+        //show la deuxième carte dans la main du croupier.
+        return dealerHand.addCard ( card 2 );
     }
 
     //retourne dealerHand
     public Hand getDealerHand() {
-        return null;
+        return dealerHand;
     }
 
     //retourne playerHand
     public Hand getPlayerHand() {
-        return null;
+        return playerHand;
     }
 
     // ice cream
@@ -99,35 +110,38 @@ public class BlackjackGame {
         }
     }
 
-    //retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
     public boolean isPush() {
-        //ref tp1
-        return false;
+        //retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
+        if (Integer.parseInt(this.playerHand) <= 21 || this.playerHand == this.dealerHand)
+            return true;
+        else
+            return false;
     }
 
-
-    //retourne true si le player gagne. False sinon.
     public boolean playerWins() {
-        //ref tp1
+        //retourne true si le player gagne. False sinon.
+        if(this.playerHand == 21)
+            return true;
+        else
         return false;
     }
 
-    // ajoute le montant du mise gagner au montant total
     public void addBetToTotal() {
-        //ref tp1
+        // ajoute le montant du mise gagner au montant total
+        totalMoney = totalMoney + betAmount;
     }
 
-    // ajoute le montant de mise gagner selon 3:2 au montant total dans le cas de blackjack
     public void addBlackjackToTotal() {
-        //ref tp1
+        // ajoute le montant de mise gagner selon 3:2 au montant total dans le cas de blackjack
+        totalMoney = (totalMoney + betAmount) * 1.5;
     }
 
-    // soustraire le montant du bet perdu du montant total
     public void subtractBetFromTotal() {
-        //ref tp1
+        // soustraire le montant du bet perdu du montant total
+        totalMoney = totalMoney - betAmount;
     }
 
-//created this method because I had an error in BlackjackApp, line 73
     public void saveMoney () {
+        //created this method because I had an error in BlackjackApp, line 73
     }
 }

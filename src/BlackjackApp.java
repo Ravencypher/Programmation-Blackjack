@@ -16,7 +16,10 @@ public class BlackjackApp {
     
 	// affiche le message Out of money! Would you like to add more? (y/n):. Si le joueur tappe y alors la fonction reset la balance du joueur au 100 et retourne true. False Sinon.
     private static boolean buyMoreChips() {
-        return false;
+        if (playAgain == "y")
+        return true;
+        else
+            return false;
     }
     
 	// affiche le message Bet amount, lire la valeur de la mise saisi par le joueur. Valide cette valeur. Si la valeur n'est pas valide afficher le message Bet must be between
