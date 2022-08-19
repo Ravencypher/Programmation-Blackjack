@@ -1,4 +1,3 @@
-import java.util.Locale;
 import java.util.Scanner;
 
 public class BlackjackApp {
@@ -10,10 +9,15 @@ public class BlackjackApp {
         String playAgain = "y";
         while ( playAgain.equalsIgnoreCase ( "y" ) ) {
 //             votre scenario de simulation vient ici
-            showMoney ();
+            game = new BlackjackGame ();
+
+            //showMoney ();
             Scanner scanner = new Scanner ( System.in );
+            game.deal ();
+            showHands ();
             int betAmount = scanner.nextInt ();
-            getBetAmount ();
+            //getBetAmount ();
+
         }
         System.out.println ( "\nBye!" );
     }
@@ -61,16 +65,18 @@ public class BlackjackApp {
     // affiche le message DEALER'S CARDS et puis affiche les cartes dans la main du croupier
     private static void showDealerHand () {
         System.out.println ( "DEALER'S CARDS" );
-        for (Card c : game.getDealerHand ().getCards ()) {
-            System.out.println ( c.display () );
+        for (Card card : game.getDealerHand ().getCards ()) {
+            if ( card != null )
+                System.out.println ( card.display () );
         }
     }
 
     // affiche le message YOUR CARDS et puis affiche les cartes dans la main du joueur
     private static void showPlayerHand () {
         System.out.println ( "YOUR CARDS" );
-        for (Card c : game.getPlayerHand ().getCards ()) {
-            System.out.println ( c.display () );
+        for (Card card : game.getPlayerHand ().getCards ()) {
+            if ( card != null )
+                System.out.println ( card.display () );
         }
     }
 

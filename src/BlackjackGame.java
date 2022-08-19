@@ -68,6 +68,7 @@ public class BlackjackGame {
     }
 
     public void deal () {
+        //ici va falloir surement faire une boucle for pour y faire sortir deux cartes
         playerHand.addCard ( deck.drawCard () );
         dealerHand.addCard ( deck.drawCard () );
     }
@@ -96,7 +97,7 @@ public class BlackjackGame {
 
     //retourne playerHand
     public Hand getPlayerHand () {
-        return playerHand;
+            return playerHand;
     }
 
     // ice cream

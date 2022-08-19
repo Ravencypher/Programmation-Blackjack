@@ -34,7 +34,8 @@ public class Hand {
 
     // ajouter une carte au tableau
     public void addCard (Card card) {
-        this.hand[counter] = card;
+        if (card !=null)
+            this.hand[counter] = card;
         counter++;
     }
 
