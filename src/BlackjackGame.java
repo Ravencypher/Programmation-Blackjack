@@ -24,39 +24,32 @@ public class BlackjackGame {
         return this.totalMoney < this.minBet;
     }
 
-    // pour initialiser totalMoney a 100
     public void resetMoney () {
-        this.totalMoney = 100;
+        loadMoney ();
+        //this.totalMoney = 100;
     }
 
-    //retourne false si double localBetAmt est inférieur au minBet
-    //ou supérieur au maxBet ou supérieur au totalMoney. True sinon.
     public boolean isValidBet (double localBetAmt) {
         return this.totalMoney >= localBetAmt && localBetAmt >= this.minBet && localBetAmt <= this.maxBet;
     }
 
-    //retourner minBet
     public double getMinBet () {
         return minBet;
     }
 
-    //retourner le montant total que le joueur peut l'utiliser pour la mise.
     public double getMaxBet () {
         return maxBet;
     }
 
-    // pour retourner le montant total
     public double getTotalMoney () {
         return totalMoney;
     }
 
     public void setBet (double amt) {
-        //pour initialiser le montant de la mise qu'on va faire
         this.betAmount = amt;
     }
 
     public void deal () {
-        //ici va falloir surement faire une boucle for pour y faire sortir deux cartes
         playerHand.addCard ( deck.drawCard () );
         playerHand.addCard ( deck.drawCard () );
         dealerHand.addCard ( deck.drawCard () );
@@ -65,69 +58,59 @@ public class BlackjackGame {
 
     public void hit () {
         playerHand.addCard ( deck.drawCard () );
-        //pour distribuer une carte en plus pour le joueur dans le cas où il fait hit.
     }
 
     public void stand () {
-        //qui ajoute des cartes à la main du croupier tant que la somme des points dont il dispose est inférieur à 17.
         while ( this.dealerHand.getPoints () < 17 ) {
             dealerHand.addCard ( deck.drawCard () );
         }
     }
 
     public Card getDealerShowCard () {
-        //show la deuxième carte dans la main du croupier.
         return dealerHand.getCards ()[1];
     }
 
-    //retourne dealerHand
     public Hand getDealerHand () {
         return dealerHand;
     }
 
-    //retourne playerHand
     public Hand getPlayerHand () {
         return playerHand;
     }
 
-    // ice cream
     public boolean isBlackjackOrBust () {
-        return playerHand.isBlackjack () || playerHand.isBust ()
-                || dealerHand.isBlackjack () || dealerHand.isBust ();
+        return this.playerHand.isBlackjack () || this.playerHand.isBust ()
+                || this.dealerHand.isBlackjack () || this.dealerHand.isBust ();
     }
 
     public boolean isPush () {
-        //retourne true si les points dans la main de joueur est inférieur ou égale 21
-        // et ces points sont égales aux points avec le courtier. False sinon.
         return ( this.playerHand.getPoints () <= 21 ) && ( this.playerHand.getPoints () == this.dealerHand.getPoints () );
     }
 
     public boolean playerWins () {
-        return this.dealerHand.getPoints () <= 21 && (this.playerHand.getPoints () > this.dealerHand.getPoints () || this.playerHand.getPoints () == 21) ;
+        return ( this.dealerHand.getPoints () > 21 || this.playerHand.getPoints () == 21 )
+                && ( this.playerHand.getPoints () > this.dealerHand.getPoints () || this.dealerHand.getPoints () < this.playerHand.getPoints () );
     }
 
     public void addBetToTotal () {
-        // ajoute le montant du mise gagner au montant total
         totalMoney = totalMoney + betAmount;
     }
 
     public void addBlackjackToTotal () {
-        // ajoute le montant de mise gagner selon 3:2 au montant total dans le cas de blackjack
         totalMoney = totalMoney + ( betAmount * 1.5 );
     }
 
     public void subtractBetFromTotal () {
-        // soustraire le montant du bet perdu du montant total
         totalMoney = totalMoney - betAmount;
     }
 
     public void saveMoney () {
-        //created this method because I had an error in BlackjackApp, line 75
+        //created this method because I had an error in BlackjackApp, line 122
     }
 
-
     public void resetHands () {
-        this.playerHand.resetHand();
+        //Created resetHands so it's simpler to reset both player and dealer hands.
+        this.playerHand.resetHand ();
         this.dealerHand.resetHand ();
     }
 }

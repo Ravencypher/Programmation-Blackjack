@@ -29,15 +29,9 @@ public class Card {
 
     public boolean isAce () {
         return rank.equalsIgnoreCase ( "ace" );
-        //if(rank.equalsIgnoreCase ("ace")) {
-        //    return true;
-        //}else{
-        //    return false;
-        //}
     }
 
     public String display () {
         return this.rank + " of " + this.suite;
-        //sout Valeur_rank + " of " + valeur_suite
     }
 }

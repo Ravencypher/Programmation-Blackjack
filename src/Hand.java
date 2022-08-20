@@ -8,7 +8,6 @@ public class Hand {
         this.hand = new Card[10];
     }
 
-    //retourne le tableau hand
     public Card[] getCards () {
         return this.hand;
     }
@@ -30,15 +29,11 @@ public class Hand {
                         total = total + card.getPoints ();
                     }
                 }
-
             }
         }
         return total;
-        // retourne la somme des cartes dans le tableau hand. Si la somme est >21, il faut recompter les cartespour
-        // vérifier si il y a un ACE. Si oui on le considère comme 1, sinon on ajoute la somme des points
     }
 
-    // ajouter une carte au tableau
     public void addCard (Card card) {
         if ( card != null )
             this.hand[counter] = card;
@@ -46,14 +41,15 @@ public class Hand {
     }
 
     public boolean isBlackjack () {
-        return this.getPoints () == 21 && this.hand.length == 2;
+        return getPoints () == 21;
     }
 
     public boolean isBust () {
-        return this.getPoints () > 21;
+        return getPoints () > 21;
     }
 
     public void resetHand () {
+        //Created resetHand so it's simpler to reset both player and dealer hands.
         this.hand = new Card[10];
         this.counter = 0;
     }
