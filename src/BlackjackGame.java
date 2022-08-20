@@ -1,6 +1,3 @@
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class BlackjackGame {
     private final Hand playerHand;
     private final Hand dealerHand;
@@ -10,14 +7,13 @@ public class BlackjackGame {
     private double betAmount;
     private double totalMoney;
 
-    //Initialiser deck, playerHand, dealerHand, minBet et maxBet
-    //le minimum et le maximum de la mise sont de 5 et 1000 respectivement.
     public BlackjackGame () {
         this.deck = new Deck ();
         this.playerHand = new Hand ( "player" );
         this.dealerHand = new Hand ( "dealer" );
         this.minBet = 5.0;
         this.maxBet = 1000.0;
+        this.totalMoney = 100;
     }
 
     public void loadMoney () {
@@ -26,11 +22,6 @@ public class BlackjackGame {
 
     public boolean isOutOfMoney () {
         return this.totalMoney < this.minBet;
-        //if(this.totalMoney < this.minBet)
-        //    return true;
-        //else
-        //    return false;
-
     }
 
     // pour initialiser totalMoney a 100
@@ -38,13 +29,10 @@ public class BlackjackGame {
         this.totalMoney = 100;
     }
 
-    //retourne false si double localBetAmt est inférieur au minBet ou supérieur au maxBet ou supérieur au totalMoney. True sinon.
+    //retourne false si double localBetAmt est inférieur au minBet
+    //ou supérieur au maxBet ou supérieur au totalMoney. True sinon.
     public boolean isValidBet (double localBetAmt) {
-        return this.betAmount > this.minBet;
-        //if (this.betAmount > this.minBet)
-        //    return true;
-        //else
-        //    return false;
+        return this.totalMoney >= localBetAmt && localBetAmt >= this.minBet && localBetAmt <= this.maxBet;
     }
 
     //retourner minBet
@@ -70,6 +58,8 @@ public class BlackjackGame {
     public void deal () {
         //ici va falloir surement faire une boucle for pour y faire sortir deux cartes
         playerHand.addCard ( deck.drawCard () );
+        playerHand.addCard ( deck.drawCard () );
+        dealerHand.addCard ( deck.drawCard () );
         dealerHand.addCard ( deck.drawCard () );
     }
 
@@ -97,32 +87,23 @@ public class BlackjackGame {
 
     //retourne playerHand
     public Hand getPlayerHand () {
-            return playerHand;
+        return playerHand;
     }
 
     // ice cream
     public boolean isBlackjackOrBust () {
         return playerHand.isBlackjack () || playerHand.isBust ()
                 || dealerHand.isBlackjack () || dealerHand.isBust ();
-        //if(playerHand.isBlackjack() || playerHand.isBust()
-        //        || dealerHand.isBlackjack() || dealerHand.isBust())
-        //    return true;
-        //else
-        //    return false;
     }
 
     public boolean isPush () {
-        //retourne true si les points dans la main de joueur est inférieur ou égale 21 et ces points sont égales aux points avec le courtier. False sinon.
+        //retourne true si les points dans la main de joueur est inférieur ou égale 21
+        // et ces points sont égales aux points avec le courtier. False sinon.
         return ( this.playerHand.getPoints () <= 21 ) && ( this.playerHand.getPoints () == this.dealerHand.getPoints () );
     }
 
     public boolean playerWins () {
-        return this.playerHand.getPoints () > this.dealerHand.getPoints () || this.playerHand.getPoints () == 21;
-        //retourne true si le player gagne. False sinon.
-        //if(this.playerHand.getPoints() > this.dealerHand.getPoints () || this.playerHand.getPoints() == 21)
-        //    return true;
-        //else
-        //    return false;
+        return this.dealerHand.getPoints () <= 21 && (this.playerHand.getPoints () > this.dealerHand.getPoints () || this.playerHand.getPoints () == 21) ;
     }
 
     public void addBetToTotal () {
@@ -142,5 +123,11 @@ public class BlackjackGame {
 
     public void saveMoney () {
         //created this method because I had an error in BlackjackApp, line 75
+    }
+
+
+    public void resetHands () {
+        this.playerHand.resetHand();
+        this.dealerHand.resetHand ();
     }
 }

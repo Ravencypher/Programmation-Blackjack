@@ -1,5 +1,5 @@
 public class Hand {
-    private static int counter = 0;
+    private int counter = 0;
     private Card[] hand;
     private String user;
 
@@ -15,16 +15,22 @@ public class Hand {
 
     public int getPoints () {
         int total = 0;
-        for (Card card : hand)
-            total = total + card.getPoints ();
+        for (Card card : hand) {
+            if ( card != null ) {
+                total = total + card.getPoints ();
+            }
+        }
         if ( total > 21 ) {
             total = 0;
             for (Card card : hand) {
-                if ( card.isAce () ) {
-                    total = total + 1;
-                } else {
-                    total = total + card.getPoints ();
+                if ( card != null ) {
+                    if ( card.isAce () ) {
+                        total = total + 1;
+                    } else {
+                        total = total + card.getPoints ();
+                    }
                 }
+
             }
         }
         return total;
@@ -34,7 +40,7 @@ public class Hand {
 
     // ajouter une carte au tableau
     public void addCard (Card card) {
-        if (card !=null)
+        if ( card != null )
             this.hand[counter] = card;
         counter++;
     }
@@ -45,5 +51,10 @@ public class Hand {
 
     public boolean isBust () {
         return this.getPoints () > 21;
+    }
+
+    public void resetHand () {
+        this.hand = new Card[10];
+        this.counter = 0;
     }
 }

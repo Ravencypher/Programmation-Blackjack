@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Deck {
     private Card[] deck;
     private int currentCardIndex;
@@ -17,14 +19,17 @@ public class Deck {
                 deck[counter] = new Card ( suite, rank, points );
                 counter++;
             }
-            shuffleDeck ();
+
             //stocke les cartes dans  Card[ ] deck et ensuite il appelle la fonction shuflleDeck().
         }
+        shuffleDeck ();
     }
 
     private void shuffleDeck () {
-        for (int i = 51; i > 0; --i) {
-            int randomCard = (int)( Math.random () * 52 );
+        Random r = new Random ();
+        for (int i = 51; i > 0; i--) {
+            //int randomCard = (int)( Math.random () * 52 );
+            int randomCard = r.nextInt (i+1 );
             Card temporary = deck[i];
             deck[i] = deck[randomCard];
             deck[randomCard] = temporary;

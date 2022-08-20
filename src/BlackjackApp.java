@@ -7,16 +7,35 @@ public class BlackjackApp {
         System.out.println ( "BLACKJACK!" );
         System.out.println ( "Blackjack payout is 3:2 \n\n" );
         String playAgain = "y";
+        game = new BlackjackGame ();
         while ( playAgain.equalsIgnoreCase ( "y" ) ) {
-//             votre scenario de simulation vient ici
-            game = new BlackjackGame ();
+            showMoney ();
 
-            //showMoney ();
-            Scanner scanner = new Scanner ( System.in );
+            if (game.isOutOfMoney ()){
+                if (buyMoreChips () == false)
+                    break;
+            }
+
+
+            getBetAmount ();
+
             game.deal ();
-            showHands ();
-            int betAmount = scanner.nextInt ();
-            //getBetAmount ();
+            showDealerShowCard ();
+            showPlayerHand ();
+
+            System.out.printf ( "Your points: %d%n", game.getPlayerHand ().getPoints () );
+            while ( getHitOrStand ().equalsIgnoreCase ( "h" ) ) {
+                game.hit ();
+                if ( game.isBlackjackOrBust () )
+                    break;
+                showPlayerHand ();
+                System.out.printf ( "Your points: %d%n", game.getPlayerHand ().getPoints () );
+            }
+
+            game.stand ();
+            showWinner ();
+            playAgain = Console.getString ( "Continue? (y/n):", new String[]{"y", "n"} );
+            game.resetHands ();
 
         }
         System.out.println ( "\nBye!" );
@@ -24,30 +43,26 @@ public class BlackjackApp {
 
     // affiche le message Out of money! Would you like to add more? (y/n):. Si le joueur tappe y alors la fonction reset la balance du joueur au 100 et retourne true. False Sinon.
     private static boolean buyMoreChips () {
-        System.out.println ( "You are out of Money! \nWould you buy more? (Press y or n) : " + game.something );
-        if ( "y" )
+        String addMore = Console.getString ("You are out of Money! \nWould you buy more? (Press y or n) : ", new String[]{"y", "n"}  );
+
+        if ( addMore.equalsIgnoreCase ( "y" ) ) {
+            game.resetMoney ();
             return true;
-        else
+            //peut être utiliser console.
+        } else {
             return false;
+        }
     }
 
     // affiche le message Bet amount, lire la valeur de la mise saisi par le joueur. Valide cette valeur. Si la valeur n'est pas valide afficher le message Bet must be between
     private static void getBetAmount () {
-        System.out.println ( "Bet amount : " + game.betAmount );
-        while ( !game.isValidBet ( game.setBet ( amt ) ) ) {
-            System.out.println ( "Bet must be between $5 and $1000!" );
-        }
+        double betAmount = Console.getDouble ( "Bet amount :", game.getMinBet (), Math.min ( game.getMaxBet (), game.getTotalMoney () ));
+        game.setBet ( betAmount );
     }
 
-    // Affiche le message Hit or Stand? (h/s): et puis retourne ce que le joueur a tappe.
+    // Affiche le message Hit or Stand? (h/s): et puis retourne ce que le joueur a tapé.
     private static String getHitOrStand () {
-        System.out.println ( "Do you wish to Hit or Stand? (Press h or s) : " + game.something );
-        if ( "h" ) {
-            game.hit ();
-            return answer;
-        } else
-            game.stand ();
-        return answer;
+        return Console.getString ( "Do you wish to Hit or Stand? (Press h or s) : ", new String[]{"h", "s"} );
     }
 
     // affiche les cartes dans la main du croupier et les cartes dans la main du joueur
@@ -59,7 +74,9 @@ public class BlackjackApp {
 
     // affiche le message DEALER'S SHOW CARD et puis affiche le deuxieme carte dans la main du croupier
     private static void showDealerShowCard () {
+        System.out.println ( "DEALER'S SHOW CARD" );
         System.out.println ( game.getDealerShowCard ().display () );
+        System.out.println ( );
     }
 
     // affiche le message DEALER'S CARDS et puis affiche les cartes dans la main du croupier
@@ -69,6 +86,7 @@ public class BlackjackApp {
             if ( card != null )
                 System.out.println ( card.display () );
         }
+        System.out.println ( );
     }
 
     // affiche le message YOUR CARDS et puis affiche les cartes dans la main du joueur
@@ -78,7 +96,9 @@ public class BlackjackApp {
             if ( card != null )
                 System.out.println ( card.display () );
         }
+        System.out.println ( );
     }
+
 
     // affiche Total money:  et le montant total
     private static void showMoney () {
